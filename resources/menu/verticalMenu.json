@@ -1,0 +1,49 @@
+{
+  "menu": [
+    {
+      "url": "/belakang/dashboard",
+      "name": "Dashboard",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "dashboard-admin"
+    },
+    {
+      "url": "/belakang/karyawan",
+      "icon": "menu-icon tf-icons ti ti-file",
+      "name": "Data Karyawan",
+      "slug": "karyawan.index"
+    },
+    {
+      "url": "/belakang/admin",
+      "icon": "menu-icon tf-icons ti ti-file",
+      "name": "Data Admin",
+      "slug": "admin.index"
+    },
+    {
+      "url": "/belakang/data-aset",
+      "icon": "menu-icon tf-icons ti ti-file",
+      "name": "Data Asset",
+      "slug": "asset.index"
+    },
+    {
+      "url": "pages/misc-error",
+      "name": "Error",
+      "icon": "menu-icon tf-icons ti ti-alert-triangle",
+      "slug": "pages-misc-error",
+      "target": "_blank"
+    },
+    {
+      "url": "auth/login-basic",
+      "name": "Login",
+      "icon": "menu-icon tf-icons ti ti-login",
+      "slug": "auth-login-basic",
+      "target": "_blank"
+    },
+    {
+      "url": "auth/register-basic",
+      "name": "Register",
+      "icon": "menu-icon tf-icons ti ti-user",
+      "slug": "auth-register-basic",
+      "target": "_blank"
+    }
+  ]
+}
