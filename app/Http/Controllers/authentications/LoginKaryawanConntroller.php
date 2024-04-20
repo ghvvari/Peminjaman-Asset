@@ -19,7 +19,7 @@ class LoginKaryawanConntroller extends Controller
   public function loginKaryawan(Request $request)
   {
     // return $request->all();
-    // dd($request);
+    dd(Auth::guard('karyawan')->attempt($request->only('email', 'password')));
       if(Auth::guard('karyawan')->attempt($request->only('email', 'password'))) {
           // dd($request);
           $user = Auth::guard('karyawan')->user();

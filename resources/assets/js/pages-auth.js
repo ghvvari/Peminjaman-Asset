@@ -11,14 +11,14 @@ document.addEventListener('DOMContentLoaded', function (e) {
     if (formAuthentication) {
       const fv = FormValidation.formValidation(formAuthentication, {
         fields: {
-          username: {
+          email: {
             validators: {
               notEmpty: {
-                message: 'Please enter username'
+                message: 'Please enter email'
               },
               stringLength: {
                 min: 6,
-                message: 'Username must be more than 6 characters'
+                message: 'Email must be more than 6 characters'
               }
             }
           },
