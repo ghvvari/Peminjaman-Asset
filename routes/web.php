@@ -42,7 +42,7 @@ Route::get('/pages/misc-error', [MiscError::class, 'index'])->name('pages-misc-e
 Route::get('/', [LoginKaryawanConntroller::class, 'index'])->name('auth-login-karyawan');
 Route::POST('/login-karyawan', [LoginKaryawanConntroller::class, 'loginKaryawan'])->name('login-karyawan');
 Route::get('/login-admin', [LoginAdminConntroller::class, 'index'])->name('auth-login-admin');
-Route::POST('/login-admin', [LoginAdminConntroller::class, 'loginAdmin'])->name('login-admin')->middleware('auth:admin');;
+Route::POST('/login-admin', [LoginAdminConntroller::class, 'loginAdmin'])->name('login-admin');
 
 //belakang dashboard
 

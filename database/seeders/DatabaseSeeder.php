@@ -3,8 +3,14 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Admin;
 use Illuminate\Database\Seeder;
 use App\Models\Karyawan;
+use Illuminate\Support\Facades\Hash;
+
+use function Symfony\Component\String\b;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -15,7 +21,7 @@ class DatabaseSeeder extends Seeder
       $karyawan = new Karyawan();
       $karyawan->username = 'bintang';
       $karyawan->email = 'bintang@example.com';
-      $karyawan->password = bcrypt('123456'); // Jangan menggunakan Crypt::encryptString() untuk menyimpan password, gunakan bcrypt() atau Hash::make()
+      $karyawan->password = Hash::make('123456'); // Jangan menggunakan Crypt::encryptString() untuk menyimpan password, gunakan bcrypt() atau Hash::make()
       $karyawan->nik = '1234567890';
       $karyawan->nama_karyawan = 'Nama Karyawan 1';
       $karyawan->tgl_lahir = '1990-01-01';
@@ -26,6 +32,13 @@ class DatabaseSeeder extends Seeder
       $karyawan->jenis_kelamin = 'Laki-laki';
       $karyawan->alamat = 'Alamat 1';
       $karyawan->save();
+
+      $admin = new Admin();
+      $admin->nama_karyawan = 'bintang';
+      $admin->email = 'bintang@gmail.com';
+      $admin->password = Hash::make('123456');
+      $admin->level = 2; // teing ie dun
+      $admin->save();
 
     }
 }
