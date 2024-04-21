@@ -19,7 +19,7 @@ class LoginAdminConntroller extends Controller
   {
     // return $request->all();
     // dd(Auth::guard('admin')->attempt($request->only('email', 'password')));
-      if(Auth::guard('admin')->attempt($request->only('nama_karyawan','email', 'password'))) {
+      if(Auth::guard('admin')->attempt($request->only('email', 'password'))) {
           $user = Auth::guard('admin')->user();
           Session::put('admin', $user);
           // dd($user);
