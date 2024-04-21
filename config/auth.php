@@ -38,16 +38,16 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'karyawans',
         ],
-        'karyawan' => [
+        'admin' => [
           'driver' => 'session',
-          'provider' => 'karyawans',
+          'provider' => 'admins',
       ],
 
         'api' => [
           'driver' => 'token',
-          'provider' => 'users',
+          'provider' => 'karyawans',
           'hash' => false,
       ],
     ],
@@ -77,6 +77,10 @@ return [
         'karyawans' => [
           'driver' => 'eloquent',
           'model' => App\Models\Karyawan::class,
+      ],
+        'admins' => [
+          'driver' => 'eloquent',
+          'model' => App\Models\Admin::class,
       ],
 
         // 'users' => [

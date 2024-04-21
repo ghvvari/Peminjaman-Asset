@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\DBAL\TimestampType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Admin extends Model
+class Admin extends Authenticatable
 {
     use HasFactory;
     protected $tabel = 'admins';
@@ -17,4 +18,9 @@ class Admin extends Model
     {
         return $this->BelongsTo(Karyawan::class, 'id', 'nama_karyawan');
     }
+
+    protected $hidden = [
+      'password',
+      'remember_token',
+  ];
 }

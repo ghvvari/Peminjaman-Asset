@@ -19,13 +19,12 @@ class Authenticate extends Middleware
           return redirect()->route('auth-login-admin');
         }
       }else{
-        if(!auth()->guard('karyawan')->check()){
-          return redirect()->route('/');
+        if(!auth()->guard('web')->check()){
+          return redirect()->route('auth-login-karyawan');
         }
       }
       return $next($request);
-
-     }
+    }
     // protected function redirectTo(Request $request): ?string
     // {
     //     return $request->expectsJson() ? null : route('login');

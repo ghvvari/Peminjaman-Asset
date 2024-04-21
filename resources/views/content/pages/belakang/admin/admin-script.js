@@ -29,25 +29,25 @@ $(function () {
 });
 
 
-$('#username').change(function() {
-  var username = $(this).val();
-  let routeGetData = $('#password').data('route');
-  
-  $.ajax({
-      url: routeGetData,
-      method: 'GET',
-      data: {
-          username: username
-      },
-      success: function (response) {
-          $('#password').val(response.password);
-          $('#email').val(response.email);
-      },
-      error: function (xhr, status, error) {
-          console.error(xhr);
-      }
-  });
-});
+// $('#username').change(function() {
+//   var username = $(this).val();
+//   let routeGetData = $('#email').data('route');
+
+//   $.ajax({
+//       url: routeGetData,
+//       method: 'GET',
+//       data: {
+//           username: username
+//       },
+//       success: function (response) {
+//           // $('#password').val(response.password);
+//           $('#email').val(response.email);
+//       },
+//       error: function (xhr, status, error) {
+//           console.error(xhr);
+//       }
+//   });
+// });
 
 $('.btn-edit').on('click', function (e) {
   e.preventDefault();

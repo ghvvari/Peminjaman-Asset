@@ -15,7 +15,7 @@ class Karyawan
      */
     public function handle(Request $request, Closure $next): Response
     {
-      if (!session('karyawin')){
+      if (!session('karyawan')){
         return redirect()->route('auth-login-karyawan');
       }
 

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\authentications;
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\Karyawan as MiddlewareKaryawan;
 use Illuminate\Http\Request;
-use Illuminate\Models\karyawan;
+use App\Models\Karyawan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -20,16 +21,19 @@ class LoginKaryawanConntroller extends Controller
   {
     // return $request->all();
     // dd(Auth::guard('karyawan')->attempt($request->only('email', 'password')));
-      if(Auth::guard('karyawan')->attempt($request->only('email', 'password'))) {
-          // dd($request);
-          $user = Auth::guard('karyawan')->user();
-          Session::put('karyawan', $user);
+      if(Auth::guard('web')->attempt($request->only('email', 'password'))) {
+          $user = Auth::guard('web')->user();
+          Session::put('web', $user);
           // dd($user);
-
           return redirect()->route('dashboard-karyawan');
       } else {
-          // return back()->with('error', 'Maaf Email dan Password yang Anda Masukkan Salah!');
-          return redirect()->route('dashboard-karyawan');
+          return back()->with('error', 'Maaf Email dan Password yang Anda Masukkan Salah!');
       }
   }
+
+        public function logout()
+      {
+          Auth::guard('web')->logout();
+          return redirect()->route('auth-login-karyawan'); // Redirect ke halaman login atau halaman lain yang Anda tentukan
+      }
 }

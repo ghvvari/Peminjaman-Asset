@@ -24,7 +24,7 @@ class RedirectIfAuthenticated
         }else{
           return redirect()->route('auth-login-admin');
         }
-      }elseif($guard === 'karyawans'){
+      }elseif($guard === 'web'){
         if(Auth::guard($guard)->check()){
           return redirect()->route('dashboard-karyawan');
         }else{

@@ -14,24 +14,12 @@
         <option value="1">1</option>
         <option value="1">1</option> --}}
         @foreach ($karyawan as $item)
-        <option value="{{ $item->username }}" {{ ($item->username == $admin->username)?'selected':'' }}>{{$item->username}}</option>
+        <option value="{{ $item->id }}" {{ ($item->username == $admin->username)?'selected':'' }}>{{$item->username}}</option>
         @endforeach
       </select>
     </div>
   </div>
-  <div class="row">
-    <div class="col mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" disabled id="editpassword" name="password" class="form-control" data-route="{{ route('getData') }}" placeholder="Enter Password">
-    </div>
-</div>
 
-<div class="row">
-  <div class="col mb-3">
-    <label for="nameBasic" class="form-label">Email</label>
-    <input type="text" readonly id="editemail" name="email" class="form-control" placeholder="Enter Name">
-  </div>
-</div>
     <div class="row">
       <div class="col mb-3">
         <label for="nameBasic" class="form-label">Level</label>
@@ -55,24 +43,5 @@
     form.submit();
   });
 
-  $('#editusername').change(function() {
-    console.log('ada');
-  var username = $(this).val();
-  let routeGetData = $('#editpassword').data('route');
 
-  $.ajax({
-      url: routeGetData,
-      method: 'GET',
-      data: {
-          username: username
-      },
-      success: function (response) {
-          $('#editpassword').val(response.password);
-          $('#editemail').val(response.email);
-      },
-      error: function (xhr, status, error) {
-          console.error(xhr);
-      }
-  });
-});
 </script>

@@ -19,10 +19,8 @@ class AdminController extends Controller
   {
     $username = $request->input('username');
     $karyawan = Karyawan::where('username', $username)->first();
-    $password = Crypt::decryptString($karyawan->password);
     if ($karyawan) {
       return response()->json([
-        'password' => $password,
         'email' => $karyawan->email,
       ]);
     } else {
@@ -51,26 +49,30 @@ class AdminController extends Controller
   public function store(Request $request)
   {
     // return $request->all();
+    // dd($request);
     $request->validate([
       'username' => 'required|string|max:255',
-      'level' => 'required|string|max:255',
-      'email' => 'required|string|email|max:255|unique:users',
   ]);
+
   DB::beginTransaction();
 
+  $dataAdmin = Karyawan::where('id', '=', $request->username)
+        ->first();
+        // dd($dataAdmin);
+
+        $admin = new Admin();
+        $admin->username = $dataAdmin->username;
+        $admin->password = $dataAdmin->password;
+        $admin->email = $dataAdmin->email;
+        $admin->level = $request->level;
+        $admin->save();
+
+        DB::commit();
+
+        return redirect()
+          ->route('admin.index')
+          ->with('success', 'Sukses menambahkan Data');
   try {
-    $admin = new Admin();
-    $admin->username = $request->username;
-    $admin->password = Crypt::encryptString($request->password);
-    $admin->level = $request->level;
-    $admin->email = $request->email;
-    $admin->save();
-
-    DB::commit();
-
-    return redirect()
-      ->route('admin.index')
-      ->with('success', 'Sukses menambahkan Data');
   } catch (\Throwable $th) {
 
     dd($th);
@@ -107,17 +109,19 @@ class AdminController extends Controller
     // return $request->all();
       $request->validate([
       'username' => 'required|string|max:255',
-      'level' => 'required|string|max:255',
-      'email' => 'required|string|email|max:255|unique:users',
   ]);
-  $admin = Admin::where('id', $id)->first();
+
+  $dataAdmin = Karyawan::where('id', '=', $request->username)
+  ->first();
+
   // dd($admin);
     DB::beginTransaction();
     try {
-      $admin->username = $request->username;
-      $admin->password = Crypt::encryptString($request->password);
-      $admin->level = $request->level;
-      $admin->email = $request->email;
+      $admin = Admin::where('id', $id)->first();
+      $admin->username = $dataAdmin->username;
+        $admin->password = $dataAdmin->password;
+        $admin->email = $dataAdmin->email;
+        $admin->level = $request->level;
       $admin->save();
 
       DB::commit();

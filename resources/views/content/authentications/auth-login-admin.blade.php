@@ -28,7 +28,7 @@ $customizerHidden = 'customizer-hide';
 
 @section('page-script')
 @vite([
-  'resources/assets/js/pages-auth.js'
+
 ])
 @endsection
 
@@ -51,14 +51,15 @@ $customizerHidden = 'customizer-hide';
           <h4 class="mb-1 pt-2">Selamat Datang Di Peminjaman Asset!! 👋</h4>
           <p class="mb-4">Silakan Masuk Ke Akun Admin Anda Dan Mulai Aplikasi</p>
 
-          <form id="formAuthentication" class="mb-3" action="{{url('/')}}" method="GET">
+          <form id="formAuthentication" class="mb-3" action="{{route('login-admin')}}" method="POST">
+            @csrf
             <div class="mb-3">
               <label for="username" class="form-label">Username</label>
               <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" autofocus>
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email">
+              <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" >
             </div>
             <div class="mb-3 form-password-toggle">
               <label class="form-label" for="password">Password</label>
@@ -67,8 +68,7 @@ $customizerHidden = 'customizer-hide';
                 <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
               </div>
             </div>
-
-            <button class="btn btn-primary d-grid w-100">
+            <button type="submit" class="btn btn-primary d-grid w-100">
               Login
             </button>
           </form>

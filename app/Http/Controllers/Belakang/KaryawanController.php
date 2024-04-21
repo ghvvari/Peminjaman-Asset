@@ -97,7 +97,7 @@ class KaryawanController extends Controller
       $karyawan = new Karyawan();
       $karyawan->username = $request->username;
       $karyawan->email = $request->email;
-      $karyawan->password = Crypt::encryptString($request->password);
+      $karyawan->password = bcrypt($request->password);
       $karyawan->nik = $request->nik;
       $karyawan->nama_karyawan = $request->nama_karyawan;
       $karyawan->tgl_lahir = $request->tgl_lahir;
